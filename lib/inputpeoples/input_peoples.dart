@@ -11,11 +11,10 @@ class InputPeoples extends StatefulWidget {
 
 class _InputPeoplesState extends State<InputPeoples> {
 
+  // Class InputFeild
   String _initialValue;
 
-  double buttonWidth      = 120.0;
-  double clearButtonWidth = 250.0;
-
+  // Class ButtonContainer
   String buttonText;
   Color  buttonTextColor;
   Color  buttonColor;
@@ -25,6 +24,14 @@ class _InputPeoplesState extends State<InputPeoples> {
   double top;
   bool   isDisabled;
 
+  // Class _ButtonNumber
+  double buttonWidth      = 120.0;
+  double clearButtonWidth = 260.0;
+  Color  buttonDiseableColor;
+  Color  buttonNumberTextColor;
+  bool   isButtonNumberDisabled;
+  bool   isButtonMove = false;
+
   void addNumber(String number){
     setState(() {
       if(_initialValue == null){
@@ -32,12 +39,14 @@ class _InputPeoplesState extends State<InputPeoples> {
       } else {
         _initialValue += number;
       }
+      isButtonMove = false;
     });
   }
 
   void clear(){
     setState(() {
       _initialValue = null;
+      isButtonMove = true;
     });
   }
   
@@ -59,6 +68,16 @@ class _InputPeoplesState extends State<InputPeoples> {
       buttonBackColor = Color(0xFF008B8B);
       top             = 0.0;
       isDisabled      = true;
+    }
+
+    if (_initialValue == null || _initialValue.length <= 1) {
+      buttonDiseableColor = Color(0xFFF5F5F5);
+      buttonNumberTextColor = Color(0xFF232323);
+      isButtonNumberDisabled = true;
+    } else if (_initialValue.length == 2) {
+      buttonDiseableColor = Color(0xFFDCDCDC);
+      buttonNumberTextColor = Color(0xFF808080);
+      isButtonNumberDisabled = false;
     }
 
     return Scaffold(
@@ -85,16 +104,28 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 1,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('1') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 2,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('2') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 3,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('3') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                       ],
@@ -109,16 +140,28 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 4,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('4') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 5,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('5') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 6,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('6') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                       ],
@@ -133,16 +176,28 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 7,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('7') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 8,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('8') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 9,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('9') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                       ],
@@ -157,11 +212,19 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 0,
                           buttonWidth: buttonWidth,
+                          buttonDiseableColor: buttonDiseableColor,
+                          buttonNumberTextColor: buttonNumberTextColor,
+                          isButtonNumberDisabled: isButtonNumberDisabled,
+                          isButtonMove: isButtonMove,
                           onPressed: () => addNumber('0') // 変数onPressedにaddNumber()メソッドを格納
                         ),
                         _ButtonNumber(
                           number: 'クリア',
                           buttonWidth: clearButtonWidth,
+                          buttonDiseableColor: Color(0xFFF5F5F5),
+                          buttonNumberTextColor: Color(0xFF232323),
+                          isButtonNumberDisabled: true,
+                          isButtonMove: false,
                           onPressed: () => clear() // 変数onPressedにclear()メソッドを格納
                         ),
                       ],
@@ -200,27 +263,39 @@ class _ButtonNumber extends StatefulWidget {
   // 変数の定義
   final number;
   final buttonWidth;
+  final buttonDiseableColor;
+  final buttonNumberTextColor;
+  final isButtonNumberDisabled;
+  final isButtonMove;
   final onPressed;
 
   // 引数の受け取り
-  _ButtonNumber({this.number, this.buttonWidth, this.onPressed});
+  _ButtonNumber({
+    this.number,
+    this.buttonWidth,
+    this.buttonDiseableColor,
+    this.buttonNumberTextColor,
+    this.isButtonNumberDisabled,
+    this.isButtonMove,
+    this.onPressed
+  });
 
   @override
   _ButtonNumberState createState() => _ButtonNumberState();
 }
 
+
 class _ButtonNumberState extends State<_ButtonNumber> {
-  double top = 0;
+  double top;
 
   void buttonDown() {
     setState(() {
       top = 5.0;
-      // widget.変数でStatefulWidgetで定義した変数を使用できる
       widget.onPressed();
       Timer(
-          Duration(
-            milliseconds: 300,
-          ), () {
+        Duration(
+          milliseconds: 300,
+        ), () {
         buttonUp();
       });
     });
@@ -234,6 +309,13 @@ class _ButtonNumberState extends State<_ButtonNumber> {
 
   @override
   Widget build(BuildContext context) {
+
+    if (!widget.isButtonNumberDisabled){
+      top = 5.0;
+    } else if (widget.isButtonMove) {
+      top = 0.0;
+    }
+
     return Stack(
       children: <Widget>[
         Container(
@@ -256,25 +338,25 @@ class _ButtonNumberState extends State<_ButtonNumber> {
           duration: Duration(milliseconds: 100),
           width: widget.buttonWidth,
           height: 120.0,
-          child:Container(
+          child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: Color(0xFF696969)),
               borderRadius: BorderRadius.circular(10),
             ),
             child: FlatButton(
-              color: Color(0xFFF5F5F5),
+              // color: Colors.red,
+              color: widget.buttonDiseableColor,
               child: Text(
                 '${widget.number}',
                 style: TextStyle(
-                  fontSize: 40.0
+                  color: widget.buttonNumberTextColor,
+                  fontSize: 40.0,
                 ),
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
               ),
-              onPressed: (){
-                buttonDown();
-              },
+              onPressed: () => widget.isButtonNumberDisabled ? buttonDown() : null,
             ),
           ),
         ),
