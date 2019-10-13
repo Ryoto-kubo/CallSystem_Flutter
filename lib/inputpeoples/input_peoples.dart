@@ -19,14 +19,16 @@ class _InputPeoplesState extends State<InputPeoples> {
   Color  buttonTextColor;
   Color  buttonColor;
   Color  buttonBackColor;
-  double width  = 300.0;
-  double height = 100.0;
+  double width  = 250.0;
+  double height = 90.0;
   double top;
   bool   isDisabled;
 
   // Class _ButtonNumber
-  double buttonWidth      = 120.0;
-  double clearButtonWidth = 260.0;
+  double buttonNumberWidth = 340;
+  double buttonWidth       = 100.0;
+  double buttonHeight      = 100.0;
+  double clearButtonWidth  = 220.0;
   Color  buttonDiseableColor;
   Color  buttonNumberTextColor;
   bool   isButtonNumberDisabled;
@@ -71,8 +73,8 @@ class _InputPeoplesState extends State<InputPeoples> {
     }
 
     if (_initialValue == null || _initialValue.length <= 1) {
-      buttonDiseableColor = Color(0xFFF5F5F5);
-      buttonNumberTextColor = Color(0xFF232323);
+      buttonDiseableColor = Color(0xFFF7F7F7);
+      buttonNumberTextColor = Color(0xFF686868);
       isButtonNumberDisabled = true;
     } else if (_initialValue.length == 2) {
       buttonDiseableColor = Color(0xFFDCDCDC);
@@ -81,13 +83,14 @@ class _InputPeoplesState extends State<InputPeoples> {
     }
 
     return Scaffold(
+      backgroundColor: Color(0xFFFFFFFF),
       body: Column(
         children: <Widget>[
           SafeArea(
             child: HeaderTitle(headerTitle: '人数を入力してください'),
           ),
           SizedBox(
-            height: 50.0,
+            height: 30.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,13 +100,14 @@ class _InputPeoplesState extends State<InputPeoples> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(bottom: 15.0),
-                    width: 400,
+                    width: buttonNumberWidth,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         _ButtonNumber(
                           number: 1,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -113,6 +117,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 2,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -122,6 +127,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 3,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -133,13 +139,14 @@ class _InputPeoplesState extends State<InputPeoples> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 15.0),
-                    width: 400,
+                    width: buttonNumberWidth,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         _ButtonNumber(
                           number: 4,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -149,6 +156,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 5,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -158,6 +166,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 6,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -169,13 +178,14 @@ class _InputPeoplesState extends State<InputPeoples> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 15.0),
-                    width: 400,
+                    width: buttonNumberWidth,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         _ButtonNumber(
                           number: 7,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -185,6 +195,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 8,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -194,6 +205,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 9,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -205,13 +217,14 @@ class _InputPeoplesState extends State<InputPeoples> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 30.0),
-                    width: 400,
+                    width: buttonNumberWidth,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         _ButtonNumber(
                           number: 0,
                           buttonWidth: buttonWidth,
+                          buttonHeight: buttonHeight,
                           buttonDiseableColor: buttonDiseableColor,
                           buttonNumberTextColor: buttonNumberTextColor,
                           isButtonNumberDisabled: isButtonNumberDisabled,
@@ -221,8 +234,9 @@ class _InputPeoplesState extends State<InputPeoples> {
                         _ButtonNumber(
                           number: 'クリア',
                           buttonWidth: clearButtonWidth,
-                          buttonDiseableColor: Color(0xFFF5F5F5),
-                          buttonNumberTextColor: Color(0xFF232323),
+                          buttonHeight: buttonHeight,
+                          buttonDiseableColor: Color(0xFFF7F7F7),
+                          buttonNumberTextColor: Color(0xFF686868),
                           isButtonNumberDisabled: true,
                           isButtonMove: false,
                           onPressed: () => clear() // 変数onPressedにclear()メソッドを格納
@@ -234,7 +248,7 @@ class _InputPeoplesState extends State<InputPeoples> {
               )
             ],
           ),
-          SizedBox(height: 40.0,),
+          // SizedBox(height: 20.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -263,6 +277,7 @@ class _ButtonNumber extends StatefulWidget {
   // 変数の定義
   final number;
   final buttonWidth;
+  final buttonHeight;
   final buttonDiseableColor;
   final buttonNumberTextColor;
   final isButtonNumberDisabled;
@@ -273,6 +288,7 @@ class _ButtonNumber extends StatefulWidget {
   _ButtonNumber({
     this.number,
     this.buttonWidth,
+    this.buttonHeight,
     this.buttonDiseableColor,
     this.buttonNumberTextColor,
     this.isButtonNumberDisabled,
@@ -310,6 +326,8 @@ class _ButtonNumberState extends State<_ButtonNumber> {
   @override
   Widget build(BuildContext context) {
 
+    double cotainerHeight = widget.buttonHeight + 10;
+
     if (!widget.isButtonNumberDisabled){
       top = 5.0;
     } else if (widget.isButtonMove) {
@@ -320,15 +338,15 @@ class _ButtonNumberState extends State<_ButtonNumber> {
       children: <Widget>[
         Container(
           width: widget.buttonWidth,
-          height: 130.0,
+          height: cotainerHeight
         ),
         Positioned(
-          top: 10,
+          top: 10.0,
           width: widget.buttonWidth,
-          height: 120.0,
+          height: widget.buttonHeight,
           child: Container(
             decoration: BoxDecoration(
-              color: Color(0xFF696969),
+              color: Color(0xFF898989),
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
           ),
@@ -337,14 +355,13 @@ class _ButtonNumberState extends State<_ButtonNumber> {
           top: top,
           duration: Duration(milliseconds: 100),
           width: widget.buttonWidth,
-          height: 120.0,
+          height: widget.buttonHeight,
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0xFF696969)),
+              border: Border.all(color: Color(0xFFc3c3c3)),
               borderRadius: BorderRadius.circular(10),
             ),
             child: FlatButton(
-              // color: Colors.red,
               color: widget.buttonDiseableColor,
               child: Text(
                 '${widget.number}',
@@ -381,14 +398,14 @@ class InputFeild extends StatelessWidget{
     return Row(
       children: <Widget>[
         Container(
-          width: 350.0,
+          width: 300.0,
           decoration: BoxDecoration(
             borderRadius:BorderRadius.all(Radius.circular(20.0)),
             border: Border(
-              top: BorderSide(width: 6.0, color: Color(0xFF696969)),
-              left: BorderSide(width: 6.0, color: Color(0xFF696969)),
-              right: BorderSide(width: 6.0, color: Color(0xFF696969)),
-              bottom: BorderSide(width: 6.0, color: Color(0xFF696969)),
+              top: BorderSide(width: 6.0, color: Color(0xFF686868)),
+              left: BorderSide(width: 6.0, color: Color(0xFF686868)),
+              right: BorderSide(width: 6.0, color: Color(0xFF686868)),
+              bottom: BorderSide(width: 6.0, color: Color(0xFF686868)),
             )
           ),
           child: TextFormField(
@@ -397,10 +414,10 @@ class InputFeild extends StatelessWidget{
             readOnly: true,
             style: TextStyle(
               fontSize: 60.0,
-              color: Color(0xFF696969)
+              color: Color(0xFF686868)
             ),
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 35.0, horizontal: 20.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 30.0),
               border: InputBorder.none,
             ),
           ),
@@ -411,6 +428,7 @@ class InputFeild extends StatelessWidget{
             '名様',
             style: TextStyle(
               fontSize: 40.0,
+              color: Color(0xFF686868)
             )
           ),
         )

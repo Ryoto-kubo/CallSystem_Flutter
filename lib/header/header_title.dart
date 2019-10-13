@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 import 'package:callsystem/home/home_view.dart';
 
 
@@ -9,6 +10,8 @@ class HeaderTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    print(size);
     return  Column(
       children: <Widget>[
         Row(
@@ -44,11 +47,24 @@ class HeaderTitle extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              width: 1300.0,
-              child: Divider(
-                color: Colors.grey[800]
-              ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  width: 1130.0,
+                  height: 15.0,
+                  color: Color(0xFF808080),
+                ),
+                AnimatedPositioned(
+                  top: 0,
+                  left: -1130.0,
+                  duration: Duration(milliseconds: 100),
+                  width: 1130.0,
+                  height: 15.0,
+                  child: Container(
+                    color: Color(0xFF00ffff),
+                  ),
+                )
+              ],
             )
           ],
         ),

@@ -37,8 +37,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               buttonTextColor: Color(0xFFFFFFFF),
               buttonColor:     Color(0xFF53C9C5),
               buttonBackColor: Color(0xFF008B8B),
-              buttonWidth:     660.0,
-              buttonHeight:    120.0,
+              buttonWidth:     600.0,
+              buttonHeight:    100.0,
               topPosition:     0.0,
               isDisabled:      true,
             ),
@@ -56,8 +56,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
       children: <Widget>[
         Container(
           child: Image.asset('images/people.png'),
-          width: 300.0,
-          height: 300.0,
+          width: 250.0,
+          height: 250.0,
         ),
         Container(
           margin: EdgeInsets.only(left: 80.0),
@@ -79,7 +79,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                     child: Text(
                       '3',
                       style: TextStyle(
-                        fontSize: 180.0,
+                        fontSize: 150.0,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF3163ED)
                       )
@@ -139,7 +139,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               child: Text(
                 '現在呼び出し中の番号はこちらの番号です',
                 style: TextStyle(
-                  fontSize: 40.0,
+                  fontSize: 30.0,
                   color: Color(0xFF232323)
                 )
               ),

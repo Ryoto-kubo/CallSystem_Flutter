@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF4F4F4),
         body: SafeArea(
           child: HomeView(),
         )
