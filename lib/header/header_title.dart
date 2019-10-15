@@ -10,8 +10,7 @@ class HeaderTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    print(size);
+    // final Size size = MediaQuery.of(context).size;
     return  Column(
       children: <Widget>[
         Row(

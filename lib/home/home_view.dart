@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'package:callsystem/button/button_container.dart';
 
+// import 'package:redux/redux.dart';
+// import 'package:flutter_redux/flutter_redux.dart';
+
+// import 'package:callsystem/model.dart';
+// import 'package:callsystem/redux/reducers.dart';
+// import 'package:callsystem/redux/actions.dart';
+import 'package:callsystem/button/button_container.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -16,8 +22,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     super.initState();
     controller = AnimationController(
       duration: const Duration(milliseconds: 1000), vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-      controller.forward();
+    animation  = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    controller.forward();
   }
 
   @override
