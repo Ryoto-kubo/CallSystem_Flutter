@@ -1,13 +1,16 @@
-class InputNumState {
+class AppState {
   String inputNum;
   bool isButtonMove;
+  int currentPage;
 
-  InputNumState({
+  AppState({
     this.inputNum,
     this.isButtonMove,
+    this.currentPage,
   });
 
-  InputNumState.initialState(): 
+  AppState.initialState(): 
     inputNum = '',
-    isButtonMove = false;
+    isButtonMove = false,
+    currentPage = 0;
 }

@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_redux/flutter_redux.dart';
-// import 'package:redux/redux.dart';
 
 import 'package:callsystem/model.dart';
 import 'package:callsystem/header/header_title.dart';
 import 'package:callsystem/button/button_container.dart';
 import 'package:callsystem/button/number_button.dart';
 import 'package:callsystem/button/clear_button.dart';
-// import 'package:callsystem/redux/reducers.dart';
 import 'package:callsystem/redux/actions.dart';
-// import 'package:callsystem/store/index.dart';
 
-// import 'dart:async';
+import 'dart:async';
+
 
 class _ViewModel {
   String inputNum;
   bool isButtonMove;
+  int currentPage;
   final onAddInputNum;
   final onClearInputNum; 
 
   _ViewModel({
     this.inputNum,
     this.isButtonMove,
+    this.currentPage,
     this.onAddInputNum,
     this.onClearInputNum,
   });
@@ -57,13 +56,22 @@ class _InputPeoplesState extends State<InputPeoples> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<InputNumState, _ViewModel>(
+    return StoreConnector<AppState, _ViewModel>(
       distinct: true,
       converter: (store) => _ViewModel(
         inputNum: store.state.inputNum,
         isButtonMove: store.state.isButtonMove,
-        onAddInputNum: (inputNum, isButtonMove) => store.dispatch(AddInputNum(inputNum: inputNum, isButtonMove: isButtonMove)),
-        onClearInputNum: (isButtonMove) => store.dispatch(ClearInputNum(isButtonMove: isButtonMove)),
+        onAddInputNum: (inputNum, isButtonMove, currentPage)
+          => store.dispatch(AddInputNum(
+            inputNum: inputNum,
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
+        onClearInputNum: (isButtonMove, currentPage)
+          => store.dispatch(ClearInputNum(
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
       ),
       builder: (context, viewModel) {
         // _initialValueが入力されてるかどうか
@@ -124,7 +132,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('1', false),// 変数onPressedにaddNumber()メソッドを格納
+                              onPressed: () => viewModel.onAddInputNum('1', false, 1),// 変数onPressedにaddNumber()メソッドを格納
                             ),
                             NumberButton(
                               number: 2,
@@ -134,7 +142,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('2', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('2', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                             NumberButton(
                               number: 3,
@@ -144,7 +152,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('3', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('3', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                           ],
                         ),
@@ -163,7 +171,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('4', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('4', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                             NumberButton(
                               number: 5,
@@ -173,7 +181,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('5', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('5', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                             NumberButton(
                               number: 6,
@@ -183,7 +191,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('6', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('6', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                           ],
                         ),
@@ -202,7 +210,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('7', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('7', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                             NumberButton(
                               number: 8,
@@ -212,7 +220,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('8', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('8', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                             NumberButton(
                               number: 9,
@@ -222,7 +230,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('9', false) // 変数onPressedにviewModel.onAddInputNum()メソ, falseッドを格納
+                              onPressed: () => viewModel.onAddInputNum('9', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソ, false, 1ッドを格納
                             ),
                           ],
                         ),
@@ -241,7 +249,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: buttonNumberTextColor,
                               isButtonNumberDisabled: isButtonNumberDisabled,
                               isButtonMove: isButtonMove,
-                              onPressed: () => viewModel.onAddInputNum('0', false) // 変数onPressedにviewModel.onAddInputNum()メソッドを格納
+                              onPressed: () => viewModel.onAddInputNum('0', false, 1) // 変数onPressedにviewModel.onAddInputNum()メソッドを格納
                             ),
                             ClearButton(
                               number: 'クリア',
@@ -251,7 +259,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonNumberTextColor: Color(0xFF686868),
                               isButtonNumberDisabled: true,
                               isButtonMove: false,
-                              onPressed: () => viewModel.onClearInputNum(true) // 変数onPressedにclear()メソッドを格納
+                              onPressed: () => viewModel.onClearInputNum(true, 0) // 変数onPressedにclear()メソッドを格納
                             ),
                           ],
                         ),
@@ -289,7 +297,7 @@ class InputFeild extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return new StoreConnector<InputNumState, _ViewModel>(
+    return new StoreConnector<AppState, _ViewModel>(
       distinct: true,
       converter: (store) => new _ViewModel(
         inputNum: store.state.inputNum,

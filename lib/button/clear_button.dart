@@ -80,13 +80,22 @@ class _ClearButtonState extends State<ClearButton> {
 
     double cotainerHeight = widget.buttonHeight + 10;
 
-    return StoreConnector<InputNumState, _ViewModel>(
+    return StoreConnector<AppState, _ViewModel>(
       distinct: true,
       converter: (store) => _ViewModel(
         inputNum: store.state.inputNum,
         isButtonMove: store.state.isButtonMove,
-        onAddInputNum: (inputNum, isButtonMove) => store.dispatch(AddInputNum(inputNum: inputNum, isButtonMove: isButtonMove)),
-        onClearInputNum: (isButtonMove) => store.dispatch(ClearInputNum(isButtonMove: isButtonMove)),
+        onAddInputNum: (inputNum, isButtonMove, currentPage)
+          => store.dispatch(AddInputNum(
+            inputNum: inputNum,
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
+        onClearInputNum: (isButtonMove, currentPage)
+          => store.dispatch(ClearInputNum(
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
       ),
       builder: (context, viewModel) {
         return Stack(

@@ -11,14 +11,14 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
 
-  final Store store = Store<InputNumState>(
+  final Store store = Store<AppState>(
     inputNumReducer,
-    initialState: InputNumState.initialState()
+    initialState: AppState.initialState()
   );
   
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<InputNumState>(
+    return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         home: Scaffold(

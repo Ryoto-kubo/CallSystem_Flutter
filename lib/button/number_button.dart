@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/animation.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-// import 'package:callsystem/inputpeoples/input_peoples.dart';
-
 import 'package:callsystem/model.dart';
-// import 'package:callsystem/redux/reducers.dart';
 import 'package:callsystem/redux/actions.dart';
+import 'package:callsystem/redux/reducers.dart';
 
 import 'dart:async';
 
@@ -53,7 +50,7 @@ class NumberButton extends StatefulWidget {
 
 class _NumberButtonState extends State<NumberButton> {
 
-  double top;
+  double top = 0.0;
 
   void buttonDown() {
     setState(() {
@@ -82,14 +79,23 @@ class _NumberButtonState extends State<NumberButton> {
     if (!widget.isButtonNumberDisabled){
       top = 5.0;
     }
-
-    return StoreConnector<InputNumState, _ViewModel>(
+  
+    return StoreConnector<AppState, _ViewModel>(
       distinct: true,
       converter: (store) => _ViewModel(
         inputNum: store.state.inputNum,
         isButtonMove: store.state.isButtonMove,
-        onAddInputNum: (inputNum, isButtonMove) => store.dispatch(AddInputNum(inputNum: inputNum, isButtonMove: isButtonMove)),
-        onClearInputNum: (isButtonMove) => store.dispatch(ClearInputNum(isButtonMove: isButtonMove)),
+        onAddInputNum: (inputNum, isButtonMove, currentPage)
+          => store.dispatch(AddInputNum(
+            inputNum: inputNum,
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
+        onClearInputNum: (isButtonMove, currentPage)
+          => store.dispatch(ClearInputNum(
+            isButtonMove: isButtonMove,
+            currentPage: currentPage
+          )),
       ),
       builder: (context, viewModel) {
         if (viewModel.isButtonMove) {
