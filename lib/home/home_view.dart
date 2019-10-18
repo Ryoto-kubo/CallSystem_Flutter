@@ -7,6 +7,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:callsystem/model.dart';
 import 'package:callsystem/redux/reducers.dart';
 import 'package:callsystem/redux/actions.dart';
+import 'package:callsystem/page/inputpeoples/input_peoples.dart';
 import 'package:callsystem/button/button_container.dart';
 
 import 'dart:async';
@@ -50,6 +51,11 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               buttonHeight:    100.0,
               topPosition:     0.0,
               isDisabled:      true,
+              onPressed: () 
+                => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InputPeoples()),
+              ),
             ),
             _border(),
             _nowCallingNumber(),

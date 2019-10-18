@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/animation.dart';
 
-import 'package:callsystem/inputpeoples/input_peoples.dart';
+import 'package:callsystem/page/inputpeoples/input_peoples.dart';
 
 // import 'package:callsystem/redux/reducers.dart';
 // import 'package:callsystem/redux/actions.dart';
@@ -20,8 +20,8 @@ class ButtonContainer extends StatefulWidget {
   double buttonWidth;
   double buttonHeight;
   double topPosition;
-  final  onPressed;
   bool   isDisabled;
+  final  onPressed;
 
   // 引数の受け取り
   ButtonContainer({
@@ -60,10 +60,7 @@ class _ButtonContainerState extends State<ButtonContainer> {
     Timer(Duration(milliseconds: 200,), () {
       buttonUp();
       Timer(Duration(milliseconds: 400,), () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => InputPeoples()),
-        );
+        widget.onPressed();
       });
     });
   }

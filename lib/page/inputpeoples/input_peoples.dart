@@ -6,10 +6,11 @@ import 'package:callsystem/header/header_title.dart';
 import 'package:callsystem/button/button_container.dart';
 import 'package:callsystem/button/number_button.dart';
 import 'package:callsystem/button/clear_button.dart';
+import 'package:callsystem/page/selectseat/select_seat_type.dart';
+
 import 'package:callsystem/redux/actions.dart';
 
 import 'dart:async';
-
 
 class _ViewModel {
   String inputNum;
@@ -281,6 +282,11 @@ class _InputPeoplesState extends State<InputPeoples> {
                       buttonHeight:    height,
                       topPosition:     top,
                       isDisabled:      isDisabled,
+                      onPressed: () 
+                        => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SelectSeatType()),
+                      ),
                     ),
                   )
                 ],

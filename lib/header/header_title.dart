@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:callsystem/home/home_view.dart';
+import 'package:callsystem/page/inputpeoples/input_peoples.dart';
 import 'package:callsystem/model.dart';
 import 'package:callsystem/redux/actions.dart';
 import 'dart:async';
@@ -75,10 +76,7 @@ class _HeaderTitleState extends State<HeaderTitle> {
                       ),
                     onPressed: (){
                       viewModel.onPrevHomePage();
-                      Navigator.pop(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeView()),
-                      );
+                        Navigator.popUntil(context,ModalRoute.withName('/'));
                     },
                   )
                 ),

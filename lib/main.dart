@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
+        initialRoute: '/',
         home: Scaffold(
           backgroundColor: Color(0xFFF4F4F4),
           body: SafeArea(
@@ -31,4 +32,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
