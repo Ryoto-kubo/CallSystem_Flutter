@@ -95,7 +95,8 @@ class _InputPeoplesState extends State<InputPeoples> {
 
         if (viewModel.inputNum == '' || viewModel.inputNum.length <= 1) {
           buttonDiseableColor = Color(0xFFF7F7F7);
-          buttonNumberTextColor = Color(0xFF686868);
+          buttonNumberTextColor = Color(0xFF707070);
+          // buttonNumberTextColor = Color(0xFF686868);
           isButtonNumberDisabled = true;
         } else if (viewModel.inputNum.length == 2) {
           buttonDiseableColor = Color(0xFFDCDCDC);
@@ -257,7 +258,7 @@ class _InputPeoplesState extends State<InputPeoples> {
                               buttonWidth: clearButtonWidth,
                               buttonHeight: buttonHeight,
                               buttonDiseableColor: Color(0xFFF7F7F7),
-                              buttonNumberTextColor: Color(0xFF686868),
+                              buttonNumberTextColor: Color(0xFF707070),
                               isButtonNumberDisabled: true,
                               isButtonMove: false,
                               onPressed: () => viewModel.onClearInputNum(true, 0) // 変数onPressedにclear()メソッドを格納

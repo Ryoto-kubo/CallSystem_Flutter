@@ -28,7 +28,6 @@ class HeaderTitle extends StatefulWidget {
 
   @override
   _HeaderTitleState createState() => _HeaderTitleState();
-
 }
 
 class _HeaderTitleState extends State<HeaderTitle> {
